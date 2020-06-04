@@ -5,6 +5,7 @@ using UnityEngine;
 public class MainMenu : MonoBehaviour
 {
 
+    public SceneFader sceneFader;
      public void QuitGame()
     {
         Application.Quit();

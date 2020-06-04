@@ -54,13 +54,13 @@ public class BoatMovement : MonoBehaviour
         {
             checkRIght = false;
 
-            Debug.Log("false yes");
+           // Debug.Log("false yes");
         }
 
         if (pos1.position.x<transform.position.x)
         {
             checkRIght = true;
-            Debug.Log("true yes");
+          //  Debug.Log("true yes");
         }
 
         if (checkRIght)
