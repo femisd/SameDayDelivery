@@ -323,7 +323,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 326a087b69f99034cac345bf2eab42e1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2737,7 +2737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneFader: {fileID: 1328320002}
-  r: 0
+  r: 1
   g: 1
   b: 1
 --- !u!4 &1315156036
@@ -2817,6 +2817,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  testImage: {fileID: 0}
 --- !u!4 &1328320003
 Transform:
   m_ObjectHideFlags: 0

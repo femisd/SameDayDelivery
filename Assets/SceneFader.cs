@@ -9,6 +9,7 @@ public class SceneFader : MonoBehaviour
 
     public Image img;
     public AnimationCurve curve;
+    public Image testImage;
 
     void Start()
     {
