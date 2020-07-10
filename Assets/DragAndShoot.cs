@@ -15,6 +15,11 @@ public class DragAndShoot : MonoBehaviour
     public Vector2 minPower;
     public Vector2 maxPower;
 
+    public int maxNumberOfMoves = 5;
+    public int currentNumberOfMoves;
+
+    public GameObject movesText;
+
     TrajectoryLine tl;
 
     Camera cam;
@@ -26,10 +31,12 @@ public class DragAndShoot : MonoBehaviour
     {
         cam = Camera.main;
         tl = GetComponent<TrajectoryLine>();
+        currentNumberOfMoves = maxNumberOfMoves;
     }
 
     private void Update()
     {
+        movesText.GetComponent<UnityEngine.UI.Text>().text = "Moves Remaining: " + currentNumberOfMoves.ToString();
 
         // Mobile controls
         if (Input.touchCount > 0)
@@ -48,7 +55,7 @@ public class DragAndShoot : MonoBehaviour
                 tl.RenderLine(startPoint, currentPoint);
             }
 
-            // If mouse goes Up
+            // If touch goes Up
             if (Input.GetTouch(0).phase == TouchPhase.Ended)
             {
                 endPoint = cam.ScreenToWorldPoint(Input.GetTouch(0).position);
@@ -58,11 +65,12 @@ public class DragAndShoot : MonoBehaviour
                 rb.AddForce(force * power, ForceMode2D.Impulse);
 
                 tl.EndLine();
+                currentNumberOfMoves--;
             }
         }
 
 
-        // PC controls TODO: Delete later
+        // PC controls
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -86,6 +94,7 @@ public class DragAndShoot : MonoBehaviour
             rb.AddForce(force * power, ForceMode2D.Impulse);
 
             tl.EndLine();
+            currentNumberOfMoves--;
 
         }
 

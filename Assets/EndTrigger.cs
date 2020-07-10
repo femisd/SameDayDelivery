@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 public class EndTrigger : MonoBehaviour
 {
-    public GameObject completeLevelUI;
+    public GameObject completeLevelUICanvas;
     public GameObject package;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,6 +21,6 @@ public class EndTrigger : MonoBehaviour
 
     void CompleteLevel()
     {
-        completeLevelUI.SetActive(true);
+        completeLevelUICanvas.SetActive(true);
     }
 }
