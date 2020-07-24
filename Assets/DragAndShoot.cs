@@ -15,8 +15,10 @@ public class DragAndShoot : MonoBehaviour
     public Vector2 minPower;
     public Vector2 maxPower;
 
-    public int maxNumberOfMoves = 5;
-    public int currentNumberOfMoves;
+
+    public int moves = 5;
+    public static int maxNumberOfMoves;
+    public static int currentNumberOfMoves;
 
     public GameObject movesText;
 
@@ -29,36 +31,69 @@ public class DragAndShoot : MonoBehaviour
 
     private void Start()
     {
+        maxNumberOfMoves = moves; // quick workaround to make the maximum moves avalabile form the inspector for difficulty calibration.
         cam = Camera.main;
         tl = GetComponent<TrajectoryLine>();
         currentNumberOfMoves = maxNumberOfMoves;
+        OutOfMoves.resetGameOverState();
     }
 
     private void Update()
     {
         movesText.GetComponent<UnityEngine.UI.Text>().text = "Moves Remaining: " + currentNumberOfMoves.ToString();
 
-        // Mobile controls
-        if (Input.touchCount > 0)
+        if (!PauseMenu.isPaused && !OutOfMoves.isGameOver)
         {
-
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            // Mobile controls
+            if (Input.touchCount > 0)
             {
-                startPoint = cam.ScreenToWorldPoint(Input.GetTouch(0).position);
+
+                if (Input.GetTouch(0).phase == TouchPhase.Began)
+                {
+                    startPoint = cam.ScreenToWorldPoint(Input.GetTouch(0).position);
+                    startPoint.z = 15;
+                }
+
+                if (Input.GetTouch(0).phase == TouchPhase.Moved)
+                {
+                    Vector3 currentPoint = cam.ScreenToWorldPoint(Input.GetTouch(0).position);
+                    startPoint.z = 15;
+                    tl.RenderLine(startPoint, currentPoint);
+                }
+
+                // If touch goes Up
+                if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                {
+                    endPoint = cam.ScreenToWorldPoint(Input.GetTouch(0).position);
+                    endPoint.z = 15;
+
+                    force = new Vector2(Mathf.Clamp(startPoint.x - endPoint.x, minPower.x, maxPower.x), Mathf.Clamp(startPoint.y - endPoint.y, minPower.y, maxPower.y));
+                    rb.AddForce(force * power, ForceMode2D.Impulse);
+
+                    tl.EndLine();
+                    currentNumberOfMoves--;
+                }
+            }
+
+
+            // PC controls
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                startPoint = cam.ScreenToWorldPoint(Input.mousePosition);
                 startPoint.z = 15;
             }
 
-            if (Input.GetTouch(0).phase == TouchPhase.Moved)
+            if (Input.GetMouseButton(0))
             {
-                Vector3 currentPoint = cam.ScreenToWorldPoint(Input.GetTouch(0).position);
+                Vector3 currentPoint = cam.ScreenToWorldPoint(Input.mousePosition);
                 startPoint.z = 15;
                 tl.RenderLine(startPoint, currentPoint);
             }
 
-            // If touch goes Up
-            if (Input.GetTouch(0).phase == TouchPhase.Ended)
+            if (Input.GetMouseButtonUp(0))
             {
-                endPoint = cam.ScreenToWorldPoint(Input.GetTouch(0).position);
+                endPoint = cam.ScreenToWorldPoint(Input.mousePosition);
                 endPoint.z = 15;
 
                 force = new Vector2(Mathf.Clamp(startPoint.x - endPoint.x, minPower.x, maxPower.x), Mathf.Clamp(startPoint.y - endPoint.y, minPower.y, maxPower.y));
@@ -66,39 +101,17 @@ public class DragAndShoot : MonoBehaviour
 
                 tl.EndLine();
                 currentNumberOfMoves--;
+
             }
         }
 
 
-        // PC controls
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            startPoint = cam.ScreenToWorldPoint(Input.mousePosition);
-            startPoint.z = 15;
-        }
+    }
 
-        if (Input.GetMouseButton(0))
-        {
-            Vector3 currentPoint = cam.ScreenToWorldPoint(Input.mousePosition);
-            startPoint.z = 15;
-            tl.RenderLine(startPoint, currentPoint);
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            endPoint = cam.ScreenToWorldPoint(Input.mousePosition);
-            endPoint.z = 15;
-
-            force = new Vector2(Mathf.Clamp(startPoint.x - endPoint.x, minPower.x, maxPower.x), Mathf.Clamp(startPoint.y - endPoint.y, minPower.y, maxPower.y));
-            rb.AddForce(force * power, ForceMode2D.Impulse);
-
-            tl.EndLine();
-            currentNumberOfMoves--;
-
-        }
-
-
+    public static void resetCurrentNumberOfMoves()
+    {
+        currentNumberOfMoves = maxNumberOfMoves +1;
     }
 
 

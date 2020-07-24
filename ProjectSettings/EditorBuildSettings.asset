@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Map6.unity
     guid: ece3d1f88c47da44bb2b5627f1dfa817
   - enabled: 1
-    path: Assets/Scenes/Map7.unity
+    path: Assets/Scenes/Map (Sea level).unity
     guid: d10434f33ceff3140aa846debc5e900d
+  - enabled: 1
+    path: Assets/Scenes/Map7.unity
+    guid: a9d531c01c9fce9408dddcfd156a6dd2
   m_configObjects: {}
