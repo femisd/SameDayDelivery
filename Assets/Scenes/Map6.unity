@@ -1593,6 +1593,11 @@ PrefabInstance:
       propertyPath: movesText
       value: 
       objectReference: {fileID: 306273223}
+    - target: {fileID: 6820452582055575747, guid: 86fcb4a2f24b7d4408cc3c97e8ef638f,
+        type: 3}
+      propertyPath: moves
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86fcb4a2f24b7d4408cc3c97e8ef638f, type: 3}
 --- !u!1001 &1004228653

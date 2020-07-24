@@ -626,6 +626,11 @@ PrefabInstance:
       propertyPath: movesText
       value: 
       objectReference: {fileID: 2091908883}
+    - target: {fileID: 6820452582055575747, guid: 86fcb4a2f24b7d4408cc3c97e8ef638f,
+        type: 3}
+      propertyPath: moves
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86fcb4a2f24b7d4408cc3c97e8ef638f, type: 3}
 --- !u!1 &309996207 stripped
@@ -1290,31 +1295,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1182474321}
-    - target: {fileID: 5284314035168286688, guid: 767e72ee36eb38b48804ea533bfe71f6,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: replayLevel
-      objectReference: {fileID: 0}
     - target: {fileID: 5284314035202624791, guid: 767e72ee36eb38b48804ea533bfe71f6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1182474321}
-    - target: {fileID: 5284314035202624791, guid: 767e72ee36eb38b48804ea533bfe71f6,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: extraLifeState
-      objectReference: {fileID: 0}
     - target: {fileID: 5284314035484478980, guid: 767e72ee36eb38b48804ea533bfe71f6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1182474320}
-    - target: {fileID: 5284314035484478980, guid: 767e72ee36eb38b48804ea533bfe71f6,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GoToMainMenu
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 767e72ee36eb38b48804ea533bfe71f6, type: 3}
 --- !u!1 &651686065 stripped
